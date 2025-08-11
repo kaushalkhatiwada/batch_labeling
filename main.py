@@ -8,6 +8,7 @@ from utils import run_prediction_from_s3
 from typing import List
 from fastapi import UploadFile, File
 from utils import load_model
+from contextlib import asynccontextmanager
 
 # Load env vars
 load_dotenv()
@@ -45,11 +46,13 @@ def download_model():
         print("Model already exists locally. Skipping download.")
 
 
-@app.on_event("startup")
-def startup_event():
-    """Run on FastAPI startup."""
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Run startup and shutdown events."""
+    # Startup
     download_model()
     load_model(LOCAL_MODEL_PATH)
+    yield
 
 @app.post("/upload")
 async def upload(files: List[UploadFile] = File(...)):

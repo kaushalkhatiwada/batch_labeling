@@ -1,3 +1,6 @@
 .env
-fish_env
-__pycache__
+fish_env/
+__pycache__/
+model/
+.pytest_cache/
+.gitignore
