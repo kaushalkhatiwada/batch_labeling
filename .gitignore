@@ -4,3 +4,4 @@ __pycache__/
 model/
 .pytest_cache/
 .dockerignore
+deployments/secrets.yaml
