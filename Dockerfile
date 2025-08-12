@@ -9,7 +9,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --upgrade pip && \
     pip install torch==2.3.0+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html && \
-    pip install torchvision==0.23.0+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html && \
+    pip install torchvision==0.18.0+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html && \
     pip install --no-cache-dir -r requirements.txt --verbose --no-deps
 
 # Copy the entire project into container
