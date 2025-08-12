@@ -1,5 +1,6 @@
 # Use official Python base image
-FROM python:3.12.4-slim
+FROM python:3.10-slim
+
 
 # Set working directory inside the container
 WORKDIR /app
@@ -7,7 +8,8 @@ WORKDIR /app
 # Copy requirements and install dependencies
 COPY requirements.txt .
 RUN pip install --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt --verbose
+    pip install torch==2.8.0+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html && \
+    pip install --no-cache-dir -r requirements.txt --verbose --no-deps
 
 # Copy the entire project into container
 COPY . .
