@@ -3,6 +3,7 @@ boto3==1.40.3
 dotenv==0.9.9
 fastapi==0.116.1
 numpy==2.1.2
+httpx
 opencv-python==4.12.0.88
 pillow==11.0.0
 pluggy==1.6.0
