@@ -5,6 +5,8 @@ FROM python:3.12.4-slim
 # Set working directory inside the container
 WORKDIR /app
 
+RUN apt-get update && apt-get install -y libgl1-mesa-glx && rm -rf /var/lib/apt/lists/*
+
 # Copy requirements and install dependencies
 COPY requirements.txt .
 RUN pip install --upgrade pip && \
