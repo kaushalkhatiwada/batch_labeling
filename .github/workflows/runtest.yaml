@@ -21,8 +21,8 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install torch==2.8.0+cpu torchvision==0.15.2+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html
+          pip install torch==2.3.0+cpu torchvision==0.18.0+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html
           pip install -r requirements.txt
 
       - name: Run pytest
-        run: pytest tests/
+        run: pytest test/
