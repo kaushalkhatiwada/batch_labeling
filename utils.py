@@ -15,8 +15,6 @@ load_dotenv()
 
 # Setup device and model
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model = None
-# model = torch.jit.load('./model/model.pt').to(device)
 
 def load_model(model_path):
     """Load the TorchScript model from the given path into global variable."""

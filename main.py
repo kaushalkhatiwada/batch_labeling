@@ -25,9 +25,6 @@ MODEL= os.getenv("MODEL")
 LOCAL_MODEL_PATH = os.getenv("LOCAL_MODEL_PATH", "./model/model.pt")
 
 
-# Initialize FastAPI
-app = FastAPI(title="Batch Labeling")
-
 # Initialize boto3 client for MinIO
 s3 = boto3.client(
     "s3",
@@ -53,6 +50,10 @@ async def lifespan(app: FastAPI):
     download_model()
     load_model(LOCAL_MODEL_PATH)
     yield
+
+# Initialize FastAPI
+app = FastAPI(title="Batch Labeling", lifespan=lifespan)
+
 
 @app.post("/upload")
 async def upload(files: List[UploadFile] = File(...)):

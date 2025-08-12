@@ -6,3 +6,4 @@ model/
 .gitignore
 test/
 .github/
+deployments/
